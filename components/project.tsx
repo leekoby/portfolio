@@ -12,10 +12,11 @@ type ProjectProps = (typeof projectsData)[number];
 
 const Project: React.FC<ProjectProps> = ({
   title,
+  period,
   role,
   description,
   tags,
-  imageUrl,
+  images,
   deployLink,
   gitHubRepo,
 }) => {
@@ -38,11 +39,20 @@ const Project: React.FC<ProjectProps> = ({
       className='mb-3 group sm:mb-8 last:mb-0'>
       <section className='bg-gray-100 max-w-[45rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-full hover:bg-gray-200 transition'>
         <div className='pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10  flex flex-col h-full'>
+          <Image
+            src={images[0]}
+            fill
+            alt={`${title} images`}
+            className='border-[4px] border-gray-500 p-2 mb-5 rounded-lg hover:border-gray-900'
+          />
           <h3 className='text-2xl font-semibold'>{title}</h3>
+          <p>{period}</p>
           <p>{role}</p>
           {/* 설명 */}
           {description.map((line, index) => (
-            <Description key={index}>{line}</Description>
+            <Description key={index} className='mt-2 leading-relaxed text-gray-700'>
+              {line}
+            </Description>
           ))}
 
           <div className='flex text-sm space-y-1'>
