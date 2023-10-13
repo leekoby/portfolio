@@ -1,7 +1,12 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 
-const Description: React.FC<PropsWithChildren> = ({ children }): JSX.Element => {
-  return <p className='mt-2 leading-relaxed text-gray-700 '>✔ {children}</p>;
+interface Props {
+  children: ReactNode;
+  className: string;
+}
+
+const Description: React.FC<Props> = ({ children, className }): JSX.Element => {
+  return <p className={className}>- {children}</p>;
 };
 
 export default Description;
