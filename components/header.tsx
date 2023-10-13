@@ -2,9 +2,12 @@
 import { motion } from 'framer-motion';
 import { links } from '@/lib/data';
 import Link from 'next/link';
-motion;
+
+import clsx from 'clsx';
+import { useActiveSectionContext } from '@/context/active-section-context';
 
 const Header = () => {
+  const { activeSection, setActiveSection } = useActiveSectionContext();
   return (
     <header className='z-[999] relative'>
       <motion.div
@@ -21,9 +24,27 @@ const Header = () => {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}>
               <Link
-                className='flex items-center justify-center w-full px-3 py-3 transition hover:text-gray-950'
-                href={link.hash}>
+                className={clsx(
+                  'flex items-center justify-center w-full px-3 py-3 transition hover:text-gray-950',
+                  {
+                    'text-gray-950': activeSection === link.name,
+                  }
+                )}
+                href={link.hash}
+                onClick={() => {
+                  setActiveSection(link.name);
+                }}>
                 {link.name}
+                {link.name === activeSection && (
+                  <motion.span
+                    className='bg-gray-100 rounded-full absolute inset-0 -z-10'
+                    layoutId='activeSection'
+                    transition={{
+                      type: 'spring',
+                      stiffness: 380,
+                      damping: 30,
+                    }}></motion.span>
+                )}
               </Link>
             </motion.li>
           ))}

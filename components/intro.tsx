@@ -1,14 +1,30 @@
 'use client';
+import { useActiveSectionContext } from '@/context/active-section-context';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { FaGithubSquare } from 'react-icons/fa';
 import { HiDownload } from 'react-icons/hi';
 import { ImBlog } from 'react-icons/im';
+import { useInView } from 'react-intersection-observer';
+
 const Intro = () => {
+  const { ref, inView } = useInView({ threshold: 0.05 });
+  const { setActiveSection } = useActiveSectionContext();
+
+  useEffect(() => {
+    if (inView) {
+      setActiveSection('Home');
+    }
+  }, [inView, setActiveSection]);
+
   return (
-    <section className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]'>
+    <section
+      id='home'
+      className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]'
+      ref={ref}>
       <div className='flex items-center justify-center'>
         <div className='relative'>
           <motion.div
@@ -46,7 +62,7 @@ const Intro = () => {
         className='mb-10 mt-4 px-4 text-lg font-medium !leading-[2] md:text-2xl '
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}>
-        <span className='font-bold '>깊이 있게</span> 다져나가고자 하는 주니어 개발자입니다.
+        <span className='font-bold '>깊이 있는 성장</span>을 하고 싶은 주니어 개발자입니다.
         <br />
         <span className='font-bold '>Typescript</span>로 개발하는 것을 좋아하고
         <br />
