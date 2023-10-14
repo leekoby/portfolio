@@ -4,7 +4,7 @@
 
 - ⏱️ 프로젝트 기간: `2023/10/11 ~ 2023/10/15`
 
-- ⛓️ 배포 링크: [프로젝트 결과물](https://leehs-portfolio.vercel.app/)
+- ⛓️ 배포 링크: [프로젝트 결과물](https://leehs-portfolio.vercel.app/){:target="\_blank" rel="noopener"}
 
 멋있는 디자인은 아니지만 포트폴리오 웹사이트를 만들어 보고 싶었습니다.
 
