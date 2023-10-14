@@ -44,7 +44,7 @@ const Project: React.FC<ProjectProps> = ({
         scale: scaleProgess,
       }}
       className='mb-3 group sm:mb-8 last:mb-0'>
-      <section className='bg-gray-100 max-w-[45rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-full hover:bg-gray-200 transition'>
+      <section className='bg-gray-100 max-w-[45rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-full hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
         <div className='pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10  flex flex-col h-full'>
           <div className='relative w-full h-[35vh] max-h-[40vh] mb-5'>
             <motion.button
@@ -76,21 +76,23 @@ const Project: React.FC<ProjectProps> = ({
           <p>{role}</p>
           {/* 설명 */}
           {description.map((line, index) => (
-            <Description key={index} className='mt-2 leading-relaxed text-gray-700'>
+            <Description
+              key={index}
+              className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>
               {line}
             </Description>
           ))}
 
-          <div className='flex text-sm space-y-1'>
+          <div className='flex text-sm space-x-2 my-3'>
             <a
-              className='flex items-center gap-2 py-3 transition bg-white rounded-full cursor-pointer group px-7 focus:scale-110 hover:scale-110 active:scale-105 dark:bg-white/10'
+              className='flex text-gray-700 items-center gap-2 py-2 transition bg-white rounded-full cursor-pointer group px-3 focus:scale-110 hover:scale-110 active:scale-105 dark:bg-white/10 dark:text-white/60'
               href={deployLink}
               target='_blank'>
               <HiHome />
               Deploy
             </a>
             <a
-              className='flex items-center gap-2 py-3 transition bg-white rounded-full cursor-pointer group px-7 focus:scale-110 hover:scale-110 active:scale-105 dark:bg-white/10'
+              className='flex text-gray-700 items-center gap-2 py-2 transition bg-white rounded-full cursor-pointer group px-3 focus:scale-110 hover:scale-110 active:scale-105 dark:bg-white/10 dark:text-white/60'
               href={gitHubRepo}
               target='_blank'>
               <FaGithubSquare />
@@ -101,7 +103,7 @@ const Project: React.FC<ProjectProps> = ({
           <ul className='flex flex-wrap gap-2 mt-4 sm:mt-auto'>
             {tags.map((tag, index) => (
               <li
-                className='bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full'
+                className='bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70'
                 key={index}>
                 {tag}
               </li>
